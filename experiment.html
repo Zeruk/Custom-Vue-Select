@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>AFB Search</title>
+
+        <link rel="stylesheet" type="text/css" href="./css/select.css">
+    </head>
+
+    <body>
+        <div id="app">
+            <custom-select :items="[{value: 'date', name: 'Дата создания'},{value: 'name', name: 'Название'}]"
+                           :default="'date'"
+                           v-on:changed="onSortChanged"></custom-select>
+        </div>
+
+
+        <script type="text/javascript" src="./js/vue.js"></script>
+        <script type="text/javascript" src="./js/custom-select.js"></script>
+        <script type="text/javascript">
+            var apiURL = "http://127.0.0.1:8081/api/" // :8081-nodejs :8000-django
+            var app = new Vue ({
+                el: '#app',
+
+                data: {
+                    currval: "date"
+                },
+
+                methods: {
+                    onSortChanged: function(newVal) {
+                        this.currval = newVal;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
